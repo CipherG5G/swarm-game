@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<!--
+MIT License
+
+Copyright (c) 2026 CipherG5G (https://github.com/CipherG5G)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a0c12">
+<title>Swarm Game</title>
+<link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAAMIOAADCDgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///yT///8c////AP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AP///wD///8w////yv///7X///8f////AP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A////MP///8r//////////////7T///8f////AP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///zD////K/////////////////////////7T///8f////AP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AP///wD///8w////yv///////////////////////////////////7T///8f////AP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A////MP///8r//////////////////////////////////////////////7T///8f////AP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///zD////K/////////////////////////////////////////////////////////7T///8f////AP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AP///wD///8w////yv///////////////////////////////////////////////////////////////////7T///8f////AP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A////MP///8r//////////////////////////////////////////////////////////////////////////////7T///8f////AP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///zD////K/////////////////////////////////////////////////////////////////////////////////////////7T///8f////AP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AP///wD///8w////yv///////////////////////////////////////////////////////////////////////////////////////////////////7T///8f////AP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wD///8A////MP///8r//////////////////////////////////////////////////////////////////////////////////////////////////////////////7T///8f////AP///wAAAAAAAAAAAAAAAAD///8A////AP///zD////K/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7T///8f////AP///wAAAAAA////AP///wD///8w////yv///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7T///8f////AP///wD///8A////KP///8v//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7P///8X////AP///wD///8o////y///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////s////xf///8A////AP///wD///8w////yv///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7T///8f////AP///wAAAAAA////AP///wD///8w////yv////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+0////H////wD///8AAAAAAAAAAAAAAAAA////AP///wD///8w////yv//////////////////////////////////////////////////////////////////////////////////////////////////////////////tP///x////8A////AAAAAAAAAAAAAAAAAAAAAAAAAAAA////AP///wD///8w////yv///////////////////////////////////////////////////////////////////////////////////////////////////7T///8f////AP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AP///wD///8w////yv////////////////////////////////////////////////////////////////////////////////////////+0////H////wD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AP///wD///8w////yv//////////////////////////////////////////////////////////////////////////////tP///x////8A////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AP///wD///8w////yv///////////////////////////////////////////////////////////////////7T///8f////AP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AP///wD///8w////yv////////////////////////////////////////////////////////+0////H////wD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AP///wD///8w////yv//////////////////////////////////////////////tP///x////8A////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AP///wD///8w////yv///////////////////////////////////7T///8f////AP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AP///wD///8w////yv////////////////////////+0////H////wD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AP///wD///8w////yv//////////////tP///x////8A////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AP///wD///8w////yv///7X///8f////AP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////AP///wD///8k////HP///wD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA///////+f////D////gf///wD///4Af//8AD//+AAf//AAD//gAAf/wAAD/4AAAf8AAAD+AAAAfAAAADgAAAAYAAAAHAAAAD4AAAB/AAAA/4AAAf/AAAP/4AAH//AAD//4AB///AA///4Af///AP///4H////D////5///////8=">
+<style>
+/* ============ Theme ============ */
+* { box-sizing: border-box; }
+
+:root {
+  --player: #4f7cff;
+  --enemy: #ff4d6d;
+  --accent: #7c83ff;
+  --accent-2: #22d3ee;
+  --bg: #0a0c12;
+  --card: rgba(255, 255, 255, 0.045);
+  --line: rgba(255, 255, 255, 0.10);
+  --text: #e8ebf4;
+  --muted: #8b93a7;
+  color-scheme: dark;
+}
+
+html { -webkit-text-size-adjust: 100%; height: 100%; overflow: hidden; }
+
+body {
+  margin: 0;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  color: var(--text);
+  background:
+    radial-gradient(900px 520px at 12% -8%, rgba(124, 131, 255, 0.20), transparent 60%),
+    radial-gradient(800px 520px at 108% 108%, rgba(34, 211, 238, 0.13), transparent 60%),
+    var(--bg);
+  background-attachment: fixed;
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+h2, h3 { margin: 0; color: var(--text); }
+.center { text-align: center; }
+
+/* ============ Layout ============ */
+.gameLayout {
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 20px;
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  padding: 16px 20px;
+}
+
+.options,
+.game {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 640px;
+  min-height: 0;
+  padding: 16px 18px;
+}
+
+/* Options: only as tall as its content, so there is nothing to scroll */
+.options {
+  flex: 0 0 auto;
+  align-self: flex-start;
+  width: clamp(270px, 25vw, 320px);
+  max-height: 100%;
+  padding: 16px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.options h2 { font-size: 17px; letter-spacing: 0.2px; margin-bottom: 12px; }
+
+.field { margin-bottom: 14px; }
+.field:last-child { margin-bottom: 0; }
+
+.lbl, .sub {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.sub { margin: 8px 0 4px; letter-spacing: 0.04em; text-transform: none; font-size: 12px; }
+
+/* ============ Controls ============ */
+button,
+input,
+select {
+  font: inherit;
+  color: var(--text);
+}
+
+button,
+.seedInput,
+.shapeInput,
+.colorInput {
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin: 0;
+  padding: 0 12px;
+  font-size: 14px;
+  background-color: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  transition: transform 0.15s, background-color 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+
+button {
+  cursor: pointer;
+  font-weight: 600;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (hover: hover) {
+  button:hover { background-color: rgba(255, 255, 255, 0.11); border-color: rgba(255, 255, 255, 0.22); }
+  button.primary:hover { filter: brightness(1.1); }
+}
+
+button:active { transform: scale(0.97); }
+
+button:focus-visible,
+.seedInput:focus-visible,
+.shapeInput:focus-visible,
+.colorInput:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(124, 131, 255, 0.3);
+}
+
+button.primary {
+  background-image: linear-gradient(135deg, var(--accent), #5a60f0);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(90, 96, 240, 0.35);
+}
+
+.seedInput::placeholder { color: var(--muted); }
+
+.row { display: flex; gap: 8px; margin-bottom: 8px; }
+.row .seedInput { flex: 1 1 0; min-width: 0; }
+.row button { flex: 0 0 auto; width: auto; padding: 0 14px; }
+
+.shapeInput {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  padding-right: 30px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' fill='none' stroke='%238b93a7' stroke-width='2' stroke-linecap='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+}
+.shapeInput option { background: #161a26; color: var(--text); }
+
+.colorInput { padding: 4px; cursor: pointer; }
+.colorInput::-webkit-color-swatch-wrapper { padding: 0; }
+.colorInput::-webkit-color-swatch { border: none; border-radius: 8px; }
+.colorInput::-moz-color-swatch { border: none; border-radius: 8px; }
+
+/* player / enemy: swatch + shape side by side */
+.pair { display: grid; grid-template-columns: 46px 1fr; gap: 8px; }
+
+/* segmented difficulty control */
+.seg {
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.seg button {
+  flex: 1 1 0;
+  height: 32px;
+  padding: 0;
+  font-size: 13px;
+  color: var(--muted);
+  background: transparent;
+  border: none;
+  border-radius: 9px;
+}
+@media (hover: hover) { .seg button:hover { background: rgba(255, 255, 255, 0.07); color: var(--text); } }
+.seg button.active {
+  color: #fff;
+  background-image: linear-gradient(135deg, var(--accent), #5a60f0);
+  box-shadow: 0 4px 12px rgba(90, 96, 240, 0.35);
+}
+
+.closeOptions { display: none; margin-bottom: 12px; }
+
+
+/* tabs + toggles + extras */
+[hidden] { display: none !important; }
+
+.toggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 34px;
+  font-size: 14px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.toggle input { position: absolute; opacity: 0; pointer-events: none; }
+.toggle i {
+  position: relative;
+  flex: 0 0 auto;
+  width: 40px;
+  height: 22px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.13);
+  transition: background 0.2s;
+}
+.toggle i::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s;
+}
+.toggle input:checked + i { background-image: linear-gradient(135deg, var(--accent), #5a60f0); }
+.toggle input:checked + i::after { transform: translateX(18px); }
+.toggle input:focus-visible + i { box-shadow: 0 0 0 3px rgba(124, 131, 255, 0.3); }
+
+/* grouped layouts inside the options panel */
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+.duo .field { margin-bottom: 0; }
+.duo .seg button { font-size: 12px; }
+.dotsOptions { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10px; }
+.dotsOptions .lbl { grid-column: 1 / -1; }
+.dotsOptions .sub { margin: 0 0 4px; }
+.dotCol { min-width: 0; }
+.pair { grid-template-columns: 38px 1fr; gap: 6px; }
+.shapeInput { padding-left: 8px; padding-right: 22px; font-size: 13px; background-position: right 7px center; }
+.toggles { display: grid; grid-template-columns: 1fr 1fr; column-gap: 16px; }
+.toggles .lbl { grid-column: 1 / -1; }
+#openOptions { display: none; }
+button.user-select-none, button { -webkit-user-select: none; user-select: none; }
+
+button.danger { color: #ff8a9a; border-color: rgba(255, 77, 109, 0.35); background-color: rgba(255, 77, 109, 0.06); }
+@media (hover: hover) { button.danger:hover { background-color: rgba(255, 77, 109, 0.14); border-color: rgba(255, 77, 109, 0.6); } }
+
+body.no-lines .cell { border-color: transparent; }
+body.no-glow .shape.pure_dot,
+body.no-glow .shape.square,
+body.no-glow .shape.block { box-shadow: none; }
+
+/* ============ Board ============ */
+.hintText {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.play {
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.grid {
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
+  container-type: size;             /* the board sizes itself to the space left over */
+  display: grid;
+  place-items: center;
+  touch-action: none;               /* swipes move the player, they don't scroll the page */
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dots {
+  display: grid;
+  grid-template-columns: repeat(var(--n, 9), 1fr);
+  grid-template-rows: repeat(var(--n, 9), 1fr);
+  width: min(100cqw, 100cqh, 720px);
+  height: min(100cqw, 100cqh, 720px);
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.28);
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.35), 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.dots.shake { animation: shake 0.18s; }
+
+@keyframes shake {
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+.cell {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.cell:nth-child(even) { background: rgba(255, 255, 255, 0.022); }
+
+.side { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+
+#message {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+#message.over { color: #ff6b81; }
+
+/* ============ CSS-only shapes (replace the old PNG files) ============ */
+.shape {
+  position: absolute;
+  inset: 20.6%;                    /* ~30px inside a 51px cell, like the old images */
+  background: var(--c);
+  pointer-events: none;
+}
+.shape.player { --c: var(--player); }
+.shape.enemy  { --c: var(--enemy); }
+
+/* dot: soft-edged circle */
+.shape.dot {
+  inset: 20.6%;
+  background: radial-gradient(circle closest-side, var(--c) 0 82%, transparent 100%);
+  transform: scale(1.12);
+}
+
+/* pure dot: hard-edged circle */
+.shape.pure_dot {
+  background: var(--c);
+  border-radius: 50%;
+  transform: scale(0.8);
+}
+
+.shape.square {
+  background: var(--c);
+  border-radius: 8%;
+  transform: scale(0.6);
+}
+
+.shape.triangle { clip-path: polygon(50% 14%, 86% 86%, 14% 86%); }
+
+.shape.diamond  { clip-path: polygon(50% 5%, 95% 50%, 50% 95%, 5% 50%); }
+
+.shape.heart    { clip-path: polygon(50.0% 30.8%, 50.1% 29.9%, 50.7% 27.6%, 52.2% 24.2%, 54.9% 20.4%, 58.8% 17.1%, 63.8% 14.8%, 69.5% 14.0%, 75.3% 15.0%, 80.8% 17.8%, 85.1% 22.0%, 88.0% 27.3%, 89.0% 33.2%, 88.0% 39.2%, 85.1% 45.2%, 80.8% 50.8%, 75.3% 56.2%, 69.5% 61.3%, 63.8% 66.1%, 58.8% 70.7%, 54.9% 74.9%, 52.2% 78.6%, 50.7% 81.5%, 50.1% 83.4%, 50.0% 84.0%, 49.9% 83.4%, 49.3% 81.5%, 47.8% 78.6%, 45.1% 74.9%, 41.2% 70.7%, 36.2% 66.1%, 30.5% 61.3%, 24.7% 56.2%, 19.2% 50.8%, 14.9% 45.2%, 12.0% 39.2%, 11.0% 33.2%, 12.0% 27.3%, 14.9% 22.0%, 19.2% 17.8%, 24.7% 15.0%, 30.5% 14.0%, 36.2% 14.8%, 41.2% 17.1%, 45.1% 20.4%, 47.8% 24.2%, 49.3% 27.6%, 49.9% 29.9%); }
+
+.shape.star     { clip-path: polygon(50.0% 15.0%, 58.9% 42.3%, 87.6% 42.3%, 64.4% 59.2%, 73.2% 86.5%, 50.0% 69.6%, 26.8% 86.5%, 35.6% 59.2%, 12.4% 42.3%, 41.1% 42.3%); }
+
+/* block: fills the whole cell */
+.shape.block { inset: 1.5%; border-radius: 4px; }
+
+/* soft glow on the round-ish shapes */
+.shape.pure_dot, .shape.square, .shape.block { box-shadow: 0 0 14px var(--c); }
+
+/* ============ Touch controls ============ */
+.dpad {
+  --pad: clamp(46px, 9dvh, 70px);
+  display: none;
+  grid-template-columns: repeat(3, var(--pad));
+  grid-template-rows: repeat(2, var(--pad));
+  gap: 6px;
+  justify-content: center;
+  margin: 2px auto;
+}
+
+.dpad button {
+  width: var(--pad);
+  height: var(--pad);
+  padding: 0;
+  font-size: calc(var(--pad) * 0.36);
+  line-height: 1;
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.07);
+}
+.dpad button:active { background-color: rgba(124, 131, 255, 0.35); border-color: var(--accent); }
+
+.dpad .up    { grid-column: 2; grid-row: 1; }
+.dpad .left  { grid-column: 1; grid-row: 2; }
+.dpad .down  { grid-column: 2; grid-row: 2; }
+.dpad .right { grid-column: 3; grid-row: 2; }
+
+.actions { display: none; gap: 10px; justify-content: center; width: 100%; }
+.actions button { flex: 1 1 0; max-width: 200px; width: auto; height: 44px; font-size: 15px; }
+
+.scoreBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px 8px;
+}
+.scoreBar h3 {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-right: 2px;
+}
+.scoreList { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.scoreList li {
+  padding: 4px 11px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+footer {
+  flex: 0 0 auto;
+  padding: 8px 12px;
+  padding-bottom: calc(8px + env(safe-area-inset-bottom));
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+}
+footer p { margin: 0; }
+footer a { color: var(--accent-2); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+/* ============ Responsive ============ */
+@media (max-width: 850px), (max-height: 520px), (pointer: coarse) {
+  .dpad { display: grid; }
+  .actions { display: flex; }
+}
+
+/* short windows: tighten the panel a bit so it still fits without scrolling */
+@media (max-height: 700px) {
+  .gameLayout { padding: 10px 16px; }
+  .options { padding: 12px; }
+  .field, .duo { margin-bottom: 10px; }
+  .lbl { margin-bottom: 4px; }
+  button, .seedInput, .shapeInput, .colorInput { height: 36px; }
+  .seg button { height: 28px; }
+  .toggle { height: 28px; }
+}
+
+/* tablets: one narrow column of options beside the board */
+@media (max-width: 850px) {
+  .gameLayout { padding: 8px 10px; gap: 10px; }
+  .game { max-width: none; padding: 10px 14px; }
+  .options { width: clamp(200px, 28vw, 250px); padding: 12px; border-radius: 16px; }
+  .duo, .dotsOptions, .toggles { grid-template-columns: 1fr; }
+  .dotCol + .dotCol { margin-top: 6px; }
+  .field, .duo { margin-bottom: 10px; }
+  button, .seedInput, .shapeInput, .colorInput { height: 38px; }
+  .seg button { height: 30px; }
+  .toggle { height: 30px; }
+  .hintText { margin-bottom: 6px; }
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+  .hintText { display: none; }
+  .play { flex-direction: row; align-items: stretch; gap: 12px; }
+  .side { flex: 0 0 auto; justify-content: center; min-width: 190px; }
+  .scoreBar { flex-direction: column; gap: 4px; }
+  .scoreList { flex-direction: column; align-items: center; gap: 4px; }
+}
+
+/* ============ Phones & short screens: options slide in from the right edge ============ */
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 15;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+}
+.scrim.show { opacity: 1; pointer-events: auto; }
+
+@media (max-width: 599px), (max-height: 520px), (max-width: 850px) and (max-height: 700px) {
+  .gameLayout { padding: 6px 8px; gap: 0; }
+  .game { max-width: none; padding: 10px 12px; }
+
+  .options {
+    position: fixed;
+    top: 0; right: 0; bottom: 0;
+    z-index: 20;
+    align-self: auto;
+    width: min(340px, 88vw);
+    max-height: none;
+    border-radius: 18px 0 0 18px;
+    background: #10131c;
+    padding: 12px 14px calc(18px + env(safe-area-inset-bottom));
+    transform: translateX(105%);
+    visibility: hidden;
+    transition: transform 0.25s ease, visibility 0.25s;
+    box-shadow: -8px 0 30px rgba(0, 0, 0, 0.6);
+  }
+  .options.open { transform: none; visibility: visible; }
+
+  .duo, .dotsOptions, .toggles { grid-template-columns: 1fr 1fr; }
+  .dotCol + .dotCol { margin-top: 0; }
+  button, .seedInput, .shapeInput, .colorInput { height: 42px; }
+  .seg button { height: 32px; }
+  .toggle { height: 32px; }
+
+  #openOptions { display: block; }
+  .closeOptions { display: block; }
+}
+
+/* landscape phones: a wider drawer with three columns so everything fits */
+@media (max-height: 520px) and (min-width: 600px) {
+  .options {
+    width: min(640px, 94vw);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 12px;
+    align-content: start;
+    padding: 10px 14px;
+  }
+  .options .closeOptions { grid-column: 1 / -1; margin-bottom: 8px; }
+  .options .duo, .options .dotsOptions, .options .toggles { grid-column: span 2; }
+  .options .field, .options .duo { margin-bottom: 8px; }
+  .options .lbl { margin-bottom: 3px; }
+  .options #resetScores { align-self: end; margin-bottom: 8px; }
+  .options button, .options .seedInput, .options .shapeInput, .options .colorInput { height: 34px; }
+  .options .seg button { height: 28px; }
+  .options .toggle { height: 26px; }
+}
+</style>
+</head>
+<body>
+  <div class="scrim" id="scrim"></div>
+  <main class="gameLayout">
+    <aside class="options" id="options">
+      <button type="button" id="closeOptions" class="closeOptions">&#10003; Done</button>
+
+      <div class="field">
+        <span class="lbl" id="difficultyLabel">Difficulty</span>
+        <div class="seg" id="difficulty" role="radiogroup" aria-labelledby="difficultyLabel">
+          <button type="button" role="radio" data-value="Easy">Easy</button>
+          <button type="button" role="radio" data-value="Normal">Normal</button>
+          <button type="button" role="radio" data-value="Hard">Hard</button>
+        </div>
+      </div>
+
+      <div class="duo">
+        <div class="field">
+          <span class="lbl" id="sizeLabel">Board size</span>
+          <div class="seg" id="boardSize" role="radiogroup" aria-labelledby="sizeLabel">
+            <button type="button" role="radio" data-value="7">7&times;7</button>
+            <button type="button" role="radio" data-value="9">9&times;9</button>
+            <button type="button" role="radio" data-value="11">11&times;11</button>
+          </div>
+        </div>
+        <div class="field">
+          <span class="lbl" id="spawnLabel">Enemy spawn</span>
+          <div class="seg" id="spawnRate" role="radiogroup" aria-labelledby="spawnLabel">
+            <button type="button" role="radio" data-value="3">Fast</button>
+            <button type="button" role="radio" data-value="5">Mid</button>
+            <button type="button" role="radio" data-value="8">Slow</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="lbl" for="seed">Seed</label>
+        <div class="row">
+          <input type="number" id="seed" class="seedInput" placeholder="Optional" inputmode="numeric">
+          <button type="button" id="randomize" class="randBtn">Random</button>
+        </div>
+        <button type="button" id="startButton" class="startBtn primary">Start seed</button>
+      </div>
+
+      <div class="field dotsOptions">
+        <span class="lbl">Dots</span>
+        <div class="dotCol">
+          <span class="sub">Player</span>
+          <div class="pair">
+            <input type="color" id="playerColor" class="colorInput" value="#4f7cff" aria-label="Player color">
+            <select id="playerShape" class="shapeInput" aria-label="Player shape"><option value="dot">Dot</option><option value="pure_dot">Pure Dot</option><option value="square">Square</option><option value="triangle">Triangle</option><option value="diamond">Diamond</option><option value="heart">Heart</option><option value="star">Star</option><option value="block">Block</option></select>
+          </div>
+        </div>
+        <div class="dotCol">
+          <span class="sub">Enemy</span>
+          <div class="pair">
+            <input type="color" id="enemyColor" class="colorInput" value="#ff4d6d" aria-label="Enemy color">
+            <select id="enemyShape" class="shapeInput" aria-label="Enemy shape"><option value="dot">Dot</option><option value="pure_dot">Pure Dot</option><option value="square">Square</option><option value="triangle">Triangle</option><option value="diamond">Diamond</option><option value="heart">Heart</option><option value="star">Star</option><option value="block">Block</option></select>
+          </div>
+        </div>
+      </div>
+
+      <div class="field toggles">
+        <span class="lbl">Display &amp; feedback</span>
+        <label class="toggle"><span>Grid lines</span><input type="checkbox" id="optLines"><i></i></label>
+        <label class="toggle"><span>Glow</span><input type="checkbox" id="optGlow"><i></i></label>
+        <label class="toggle"><span>Sound</span><input type="checkbox" id="optSound"><i></i></label>
+        <label class="toggle" id="vibrateRow"><span>Vibration</span><input type="checkbox" id="optVibrate"><i></i></label>
+      </div>
+
+      <button type="button" id="resetScores" class="danger">Reset high scores</button>
+    </aside>
+
+    <section class="game">
+      <h3 class="center hintText" id="hint">Use ARROWS or WASD keys to move</h3>
+      <div class="play">
+        <div class="grid" id="board">
+          <div class="dots" id="dots"></div>
+        </div>
+        <div class="side">
+          <h3 id="message" class="center">Moves: 0</h3>
+          <div class="dpad" aria-label="Movement controls">
+            <button type="button" class="up"    data-dir="ArrowUp"    aria-label="Move up">&#9650;</button>
+            <button type="button" class="left"  data-dir="ArrowLeft"  aria-label="Move left">&#9664;</button>
+            <button type="button" class="down"  data-dir="ArrowDown"  aria-label="Move down">&#9660;</button>
+            <button type="button" class="right" data-dir="ArrowRight" aria-label="Move right">&#9654;</button>
+          </div>
+          <div class="actions">
+            <button type="button" id="restart">Restart</button>
+            <button type="button" id="openOptions">Options</button>
+          </div>
+          <div class="scoreBar">
+            <h3 id="highscore">High Scores</h3>
+            <ul class="scoreList">
+              <li id="easyScore">Easy: 0</li>
+              <li id="normalScore">Normal: 0</li>
+              <li id="hardScore">Hard: 0</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p class="footer">&copy; 2026 <a href="https://github.com/CipherG5G" target="_blank" rel="noopener">CipherG5G</a> &middot; Released under the <a href="https://opensource.org/license/mit" target="_blank" rel="noopener">MIT License</a></p>
+  </footer>
+
+<script>
+(() => {
+  "use strict";
+
+  /* ---------- helpers ---------- */
+  const store = {
+    get(key, fallback) {
+      try { const v = localStorage.getItem(key); return v === null ? fallback : v; }
+      catch (e) { return fallback; }
+    },
+    set(key, value) {
+      try { localStorage.setItem(key, value); } catch (e) { /* private mode etc. */ }
+    }
+  };
+  const $ = id => document.getElementById(id);
+
+  /* ---------- state ---------- */
+  let gridSize = 9;
+  let spawnEvery = 5;
+  const RANGES = { Easy: 5, Normal: 3, Hard: 1 };
+  const CHASE_CHANCE = { Easy: 0.20, Normal: 0.80, Hard: 1.00 };
+
+  let moves = 0;
+  let mode = "Playing";            // "Playing" | "Game Over"
+  let difficulty = "Normal";
+  let range = RANGES.Normal;
+  let rngState = 0;
+
+  const scores = {
+    Easy:   Number(store.get("easyScore", 0)) || 0,
+    Normal: Number(store.get("normalScore", 0)) || 0,
+    Hard:   Number(store.get("hardScore", 0)) || 0
+  };
+
+  const moveLog = [];
+  const enemies = [];
+  const player = { x: 4, y: 4, shape: "dot" };
+
+  const directions = {
+    ArrowUp:    { x: 0, y: -1 },
+    ArrowDown:  { x: 0, y: 1 },
+    ArrowLeft:  { x: -1, y: 0 },
+    ArrowRight: { x: 1, y: 0 },
+    w: { x: 0, y: -1 },
+    s: { x: 0, y: 1 },
+    a: { x: -1, y: 0 },
+    d: { x: 1, y: 0 }
+  };
+  const symbols = {
+    ArrowUp: "↑ ", ArrowDown: "↓ ", ArrowLeft: "← ", ArrowRight: "→ ",
+    w: "↑ ", s: "↓ ", a: "← ", d: "→ "
+  };
+
+  /* ---------- elements ---------- */
+  const grid = $("dots");
+  const board = $("board");
+  const hint = $("hint");
+  const message = $("message");
+  const startButton = $("startButton");
+  const randomizeButton = $("randomize");
+  const restartButton = $("restart");
+  const optionsPanel = document.querySelector(".options");
+  const openOptionsButton = $("openOptions");
+  const closeOptionsButton = $("closeOptions");
+  const scrim = $("scrim");
+  const seedInput = $("seed");
+  const playerColorInput = $("playerColor");
+  const enemyColorInput = $("enemyColor");
+  const playerShapeInput = $("playerShape");
+  const enemyShapeInput = $("enemyShape");
+  const scoreElements = { Easy: $("easyScore"), Normal: $("normalScore"), Hard: $("hardScore") };
+
+  const isTouch = window.matchMedia("(pointer: coarse)").matches || navigator.maxTouchPoints > 0;
+
+  /* ---------- saved settings ---------- */
+  const root = document.documentElement.style;
+  playerColorInput.value = store.get("playerColor", "#4f7cff");
+  enemyColorInput.value  = store.get("enemyColor", "#ff4d6d");
+  playerShapeInput.value = store.get("playerShape", "dot");
+  enemyShapeInput.value  = store.get("enemyShape", "diamond");
+  if (!playerShapeInput.value) playerShapeInput.value = "dot";
+  if (!enemyShapeInput.value)  enemyShapeInput.value = "diamond";
+  root.setProperty("--player", playerColorInput.value);
+  root.setProperty("--enemy", enemyColorInput.value);
+  player.shape = playerShapeInput.value;
+
+  // segmented controls (difficulty, board size, enemy spawn rate)
+  function bindSeg(el, key, fallback, valid, onPick) {
+    let value = store.get(key, fallback);
+    if (!valid.includes(value)) value = fallback;
+    const paint = () => el.querySelectorAll("button").forEach(b => {
+      const on = b.dataset.value === value;
+      b.classList.toggle("active", on);
+      b.setAttribute("aria-checked", on ? "true" : "false");
+    });
+    paint();
+    el.addEventListener("click", e => {
+      const b = e.target.closest("button[data-value]");
+      if (!b || b.dataset.value === value) return;
+      value = b.dataset.value;
+      store.set(key, value);
+      paint();
+      onPick();
+    });
+    return () => value;
+  }
+  const getDifficulty = bindSeg($("difficulty"), "difficulty", "Normal", Object.keys(RANGES), () => newGame());
+  const getBoardSize  = bindSeg($("boardSize"),  "boardSize",  "9", ["7", "9", "11"],          () => newGame());
+  const getSpawnEvery = bindSeg($("spawnRate"),  "spawnEvery", "5", ["3", "5", "8"],           () => newGame());
+
+  // toggles
+  const optLines = $("optLines"), optGlow = $("optGlow"), optSound = $("optSound"), optVibrate = $("optVibrate");
+  const flag = (key, def) => store.get(key, def ? "1" : "0") === "1";
+  optLines.checked   = flag("showLines", false);
+  optGlow.checked    = flag("glow", true);
+  optSound.checked   = flag("sound", false);
+  optVibrate.checked = flag("vibrate", true);
+  function applyLook() {
+    document.body.classList.toggle("no-lines", !optLines.checked);
+    document.body.classList.toggle("no-glow", !optGlow.checked);
+  }
+  applyLook();
+  [[optLines, "showLines"], [optGlow, "glow"], [optSound, "sound"], [optVibrate, "vibrate"]].forEach(([el, key]) => {
+    el.addEventListener("change", () => {
+      store.set(key, el.checked ? "1" : "0");
+      applyLook();
+      if (el === optSound) beep(660, 0.08, "sine", 0.05);
+      if (el === optVibrate && el.checked) buzz(40);
+    });
+  });
+
+  // tiny sound effects (WebAudio, no files needed)
+  let audioCtx = null;
+  function beep(freq, dur = 0.07, type = "sine", vol = 0.05, slide = 0) {
+    if (!optSound.checked) return;
+    try {
+      audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === "suspended") audioCtx.resume();
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, now);
+      if (slide) osc.frequency.exponentialRampToValueAtTime(Math.max(40, freq + slide), now + dur);
+      gain.gain.setValueAtTime(vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+      osc.connect(gain).connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + dur);
+    } catch (e) { /* audio not available */ }
+  }
+  // Vibration: Android/Chrome use navigator.vibrate; iPhone Safari has no vibrate API,
+  // so there we trigger its built-in switch haptic instead (iOS 17.4+).
+  const canVibrate = typeof navigator.vibrate === "function";
+  let hapticLabel = null;
+  function iosTick() {
+    try {
+      if (!hapticLabel) {
+        hapticLabel = document.createElement("label");
+        hapticLabel.setAttribute("aria-hidden", "true");
+        hapticLabel.style.cssText = "position:fixed;left:-99px;top:0;width:1px;height:1px;opacity:0;pointer-events:none";
+        const input = document.createElement("input");
+        input.type = "checkbox";
+        input.setAttribute("switch", "");
+        hapticLabel.appendChild(input);
+        document.body.appendChild(hapticLabel);
+      }
+      hapticLabel.click();
+    } catch (e) { /* no haptics */ }
+  }
+  function buzz(pattern) {
+    if (!optVibrate.checked) return;
+    if (canVibrate) {
+      try { navigator.vibrate(pattern); } catch (e) {}
+    } else {
+      iosTick();
+      if (Array.isArray(pattern) && pattern.length > 2) setTimeout(iosTick, pattern[0] + pattern[1]);
+    }
+  }
+  // vibration only makes sense on touch devices
+  if (!isTouch) $("vibrateRow").hidden = true;
+
+  function renderScores() {
+    for (const level of Object.keys(scores)) {
+      scoreElements[level].textContent = `${level}: ${scores[level]}`;
+    }
+  }
+
+  /* ---------- seeded random ---------- */
+  function random() {
+    rngState = (rngState * 1664525 + 1013904223) % 4294967296;
+    return rngState / 4294967296;
+  }
+  const newSeed = () => Math.floor(Math.random() * 12345);
+
+  /* ---------- board logic ---------- */
+  const isInsideGrid = (x, y) => x >= 0 && x < gridSize && y >= 0 && y < gridSize;
+
+  function isOccupied(x, y, ignoredEnemy = null) {
+    if (x === player.x && y === player.y) return true;
+    return enemies.some(e => e !== ignoredEnemy && e.x === x && e.y === y);
+  }
+
+  function randomPositionFarFromPlayer() {
+    for (let tries = 0; tries < 500; tries++) {
+      const x = Math.floor(random() * gridSize);
+      const y = Math.floor(random() * gridSize);
+      if (Math.abs(x - player.x) + Math.abs(y - player.y) > range && !isOccupied(x, y)) {
+        return { x, y };
+      }
+    }
+    return null;
+  }
+
+  function createEnemy() {
+    const pos = randomPositionFarFromPlayer();
+    if (!pos) return;
+    enemies.push({ x: pos.x, y: pos.y, shape: enemyShapeInput.value });
+  }
+
+  function getEnemyMoves(enemy) {
+    const options = [];
+    const around = [{ x: 1, y: 0 }, { x: -1, y: 0 }, { x: 0, y: 1 }, { x: 0, y: -1 }];
+    const free = (x, y) => isInsideGrid(x, y) && !isOccupied(x, y, enemy);
+
+    const shouldChase = random() < CHASE_CHANCE[difficulty];
+
+    // EASY: 80% random movement
+    if (difficulty === "Easy" && !shouldChase) {
+      for (const d of around) {
+        const x = enemy.x + d.x, y = enemy.y + d.y;
+        if (free(x, y)) options.push({ x, y });
+      }
+      return options;
+    }
+
+    // EASY (20% chase) / NORMAL (80% chase): step toward the player on each axis
+    if (difficulty === "Easy" || difficulty === "Normal") {
+      const dx = Math.sign(player.x - enemy.x);
+      const dy = Math.sign(player.y - enemy.y);
+      if (dx && free(enemy.x + dx, enemy.y)) options.push({ x: enemy.x + dx, y: enemy.y });
+      if (dy && free(enemy.x, enemy.y + dy)) options.push({ x: enemy.x, y: enemy.y + dy });
+      return options;
+    }
+
+    // HARD: always chase, pick the closest square(s)
+    for (const d of around) {
+      const x = enemy.x + d.x, y = enemy.y + d.y;
+      if (!free(x, y)) continue;
+      options.push({ x, y, distance: Math.abs(x - player.x) + Math.abs(y - player.y) });
+    }
+    if (!options.length) return [];
+    const closest = Math.min(...options.map(o => o.distance));
+    return options.filter(o => o.distance === closest);
+  }
+
+  function canMove(direction) {
+    const d = directions[direction];
+    if (!d) return false;
+    const x = player.x + d.x, y = player.y + d.y;
+    if (!isInsideGrid(x, y) || isOccupied(x, y)) return false;
+    for (const enemy of enemies) {
+      if (getEnemyMoves(enemy).some(m => m.x === x && m.y === y)) return false;
+    }
+    return true;
+  }
+
+  function moveEnemies() {
+    for (const enemy of enemies) {
+      const possible = getEnemyMoves(enemy);
+      if (!possible.length) continue;
+      const chosen = possible[Math.floor(random() * possible.length)];
+      enemy.x = chosen.x;
+      enemy.y = chosen.y;
+    }
+  }
+
+  function checkDeath() {
+    return !Object.keys(directions).some(canMove);
+  }
+
+  /* ---------- drawing ---------- */
+  function makeShape(kind, who) {
+    const el = document.createElement("div");
+    el.className = `shape ${kind} ${who}`;
+    return el;
+  }
+
+  function drawGrid() {
+    const fragment = document.createDocumentFragment();
+    const enemyMap = new Map(enemies.map(e => [`${e.x},${e.y}`, e]));
+
+    for (let y = 0; y < gridSize; y++) {
+      for (let x = 0; x < gridSize; x++) {
+        const cell = document.createElement("div");
+        cell.className = "cell";
+        if (x === player.x && y === player.y) {
+          cell.appendChild(makeShape(player.shape, "player"));
+        } else {
+          const enemy = enemyMap.get(`${x},${y}`);
+          if (enemy) cell.appendChild(makeShape(enemy.shape, "enemy"));
+        }
+        fragment.appendChild(cell);
+      }
+    }
+    grid.replaceChildren(fragment);
+
+    if (mode === "Game Over") {
+      hint.textContent = isTouch ? "Tap the board or Restart to play again." : "Press Space to restart the game.";
+    } else {
+      hint.textContent = isTouch ? "Swipe the board or use the arrows to move" : "Use ARROWS or WASD keys to move";
+    }
+  }
+
+  /* ---------- game flow ---------- */
+  function startGame(seed) {
+    gridSize = Number(getBoardSize());
+    spawnEvery = Number(getSpawnEvery());
+    root.setProperty("--n", gridSize);
+    moves = 0;
+    mode = "Playing";
+    moveLog.length = 0;
+    player.x = Math.floor(gridSize / 2);
+    player.y = Math.floor(gridSize / 2);
+    enemies.length = 0;
+    difficulty = getDifficulty();
+    range = RANGES[difficulty] ?? RANGES.Normal;
+    rngState = seed;
+    seedInput.value = seed;
+    message.textContent = `Moves: ${moves}`;
+    message.classList.remove("over");
+    drawGrid();
+  }
+
+  // Space / R / Restart: brand-new random game
+  function newGame() { startGame(newSeed()); }
+
+  function step(key) {
+    if (mode === "Game Over") return false;
+    if (!canMove(key)) {
+      grid.classList.remove("shake");
+      void grid.offsetWidth;            // restart the animation
+      grid.classList.add("shake");
+      beep(120, 0.08, "square", 0.03);
+      buzz([30, 40, 30]);
+      return false;
+    }
+
+    if (symbols[key]) moveLog.push(symbols[key]);
+    moves++;
+    player.x += directions[key].x;
+    player.y += directions[key].y;
+    moveEnemies();
+
+    console.clear();
+    console.log(moveLog.join(""));
+
+    if (checkDeath()) {
+      mode = "Game Over";
+      buzz([120, 60, 220]);
+      beep(330, 0.45, "sawtooth", 0.05, -260);
+    } else {
+      beep(440, 0.05, "sine", 0.04);
+      buzz(25);
+      if (moves % spawnEvery === 0 || moves === 1) {
+        createEnemy();
+        beep(220, 0.1, "triangle", 0.05);
+      }
+    }
+
+    drawGrid();
+    message.textContent = mode === "Game Over" ? `Game Over! Total Moves: ${moves}` : `Moves: ${moves}`;
+    message.classList.toggle("over", mode === "Game Over");
+
+    if (moves > scores[difficulty]) {
+      scores[difficulty] = moves;
+      store.set(`${difficulty.toLowerCase()}Score`, moves);
+      renderScores();
+    }
+    return true;
+  }
+
+  /* ---------- input: keyboard ---------- */
+  document.addEventListener("keydown", event => {
+    if (event.ctrlKey || event.metaKey || event.altKey) return;
+    const tag = event.target && event.target.tagName;
+    if (tag === "INPUT" || tag === "SELECT" || tag === "TEXTAREA") return;
+    if (tag === "BUTTON" && (event.key === " " || event.key === "Enter")) return;
+
+    const key = event.key.length === 1 ? event.key.toLowerCase() : event.key;
+
+    if (key === " " || key === "r") {
+      newGame();
+      event.preventDefault();
+      return;
+    }
+    if (!directions[key]) return;
+    step(key);
+    event.preventDefault();
+  });
+
+  /* ---------- input: swipe on the board ---------- */
+  const SWIPE_MIN = 24;
+  let swipe = null;
+
+  board.addEventListener("pointerdown", e => {
+    swipe = { x: e.clientX, y: e.clientY };
+  });
+  board.addEventListener("pointerup", e => {
+    if (!swipe) return;
+    const dx = e.clientX - swipe.x;
+    const dy = e.clientY - swipe.y;
+    swipe = null;
+    const ax = Math.abs(dx), ay = Math.abs(dy);
+    if (Math.max(ax, ay) < SWIPE_MIN) {
+      if (mode === "Game Over") newGame();       // tap to restart
+      return;
+    }
+    step(ax > ay ? (dx > 0 ? "ArrowRight" : "ArrowLeft") : (dy > 0 ? "ArrowDown" : "ArrowUp"));
+  });
+  board.addEventListener("pointercancel", () => { swipe = null; });
+  board.addEventListener("contextmenu", e => e.preventDefault());
+
+  /* ---------- input: on-screen arrows ---------- */
+  document.querySelectorAll(".dpad button").forEach(btn => {
+    btn.addEventListener("pointerdown", e => {
+      step(btn.dataset.dir);
+    });
+    // keyboard / assistive-tech activation (pointerdown handles touch + mouse)
+    btn.addEventListener("keydown", e => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); step(btn.dataset.dir); }
+    });
+  });
+
+  /* ---------- options ---------- */
+  $("resetScores").addEventListener("click", () => {
+    if (!confirm("Reset all high scores?")) return;
+    for (const level of Object.keys(scores)) {
+      scores[level] = 0;
+      store.set(`${level.toLowerCase()}Score`, 0);
+    }
+    renderScores();
+  });
+
+  const openOptions  = () => { optionsPanel.classList.add("open");    scrim.classList.add("show"); };
+  const closeOptions = () => { optionsPanel.classList.remove("open"); scrim.classList.remove("show"); };
+  scrim.addEventListener("click", closeOptions);
+  window.addEventListener("resize", () => { if (window.innerWidth >= 600) closeOptions(); });
+  openOptionsButton.addEventListener("click", openOptions);
+  closeOptionsButton.addEventListener("click", closeOptions);
+  document.addEventListener("keydown", e => { if (e.key === "Escape") closeOptions(); });
+
+  startButton.addEventListener("click", () => {
+    const typed = parseInt(seedInput.value, 10);
+    startGame(Number.isFinite(typed) ? typed : newSeed());
+    closeOptions();
+  });
+  randomizeButton.addEventListener("click", () => { newGame(); closeOptions(); });
+  restartButton.addEventListener("click", newGame);
+
+  playerColorInput.addEventListener("input", () => {
+    store.set("playerColor", playerColorInput.value);
+    root.setProperty("--player", playerColorInput.value);
+  });
+  enemyColorInput.addEventListener("input", () => {
+    store.set("enemyColor", enemyColorInput.value);
+    root.setProperty("--enemy", enemyColorInput.value);
+  });
+  playerShapeInput.addEventListener("change", () => {
+    store.set("playerShape", playerShapeInput.value);
+    player.shape = playerShapeInput.value;
+    drawGrid();
+  });
+  enemyShapeInput.addEventListener("change", () => {
+    store.set("enemyShape", enemyShapeInput.value);
+    for (const enemy of enemies) enemy.shape = enemyShapeInput.value;
+    drawGrid();
+  });
+
+  /* ---------- go ---------- */
+  renderScores();
+  startGame(newSeed());
+})();
+</script>
+</body>
+</html>
